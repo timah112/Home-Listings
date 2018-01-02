@@ -1,0 +1,65 @@
+<div class="thumbnail"> <!--bootstrap class that surrounds each of the properties inside a thumbnail. -->
+
+  <img src="assets/Images/{{ crib.image }}.jpg" alt ="">
+  <!-- <h3>{{ crib.address }}</h3>
+  <h4>{{ crib.price}}</h4>
+  <p>{{ crib.type }}</p> -->
+
+     <div *ngIf="!crib.showDetails">
+       <div class="caption">
+      <h4>
+        <span class="label label-primary">
+          {{ crib.type }}
+        </span>
+      </h4>
+      <h3>
+        <i class="glyphicon glyphicon-tag"></i>
+        {{ crib.price | currency:'USD':true }}
+      </h3>
+      <h4>
+        <i class="glyphicon glyphicon-home"></i>
+        {{ crib.address }}
+      </h4>
+
+      <hr>
+
+      <button
+      class ="btn btn-sm btn-success"
+      *ngIf="!crib.showDetails"
+      (click)="crib.showDetails = !crib.showDetails">
+      Details
+    </button>
+
+  </div>
+</div>
+
+<div *ngIf="crib.showDetails">
+  <div class="details">
+    <h4>
+      <span class="label label-primary">
+        Beds: {{ crib.bedrooms }}
+      </span>
+
+      <span class="label label-primary">
+        Baths: {{ crib.bathrooms }}
+      </span>
+
+      <span class= "label label-primary">
+        SqFt: {{ crib.area }}
+      </span>
+
+    </h4>
+
+    <p>{{ crib.description }}</p>
+    <p>{{ crib.description2 }}</p>
+
+    <hr>
+    <button
+      class="btn btn-sm btn-danger"
+      (click)="crib.showDetails = !crib.showDetails">
+      close
+    </button>
+
+  </div>
+</div>
+</div>
